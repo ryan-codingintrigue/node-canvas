@@ -52,6 +52,10 @@ case "$1" in
     has_freetype > /dev/null
     result=$?
     ;;
+  rsvg)
+    has_pkgconfig_lib "librsvg-2.0" > /dev/null
+    result=$?
+    ;;
   *)
     >&2 echo "Unknown library: $1"
     exit 1
