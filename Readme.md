@@ -295,7 +295,7 @@ ctx.fillText('Hello World 3', 50, 80);
 ctx.addPage();
 ```
 
-## SVG support
+## SVG Support
 
  Just like PDF support, make sure to install cairo with `--enable-svg=yes`.
  You also need to tell node-canvas that it is working on SVG upon its initialization:
@@ -304,6 +304,16 @@ ctx.addPage();
 var canvas = new Canvas(200, 500, 'svg');
 // Use the normal primitives.
 fs.writeFile('out.svg', canvas.toBuffer());
+```
+
+## SVG Image Support
+
+If librsvg is on your system when node-canvas is installed, node-canvas can render SVG images within your canvas context. Note that this currently works by simply rasterizing the SVG image using librsvg.
+
+```js
+var img = new Image;
+img.src = './example.svg';
+ctx.drawImage(img, 0, 0, 100, 100);
 ```
 
 ## Benchmarks
