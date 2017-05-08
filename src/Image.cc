@@ -963,6 +963,7 @@ Image::loadJPEG(FILE *stream) {
 
 cairo_status_t
 Image::loadSVGFromBuffer(uint8_t *buf, unsigned len) {
+  rsvg_set_default_dpi(300);
   cairo_status_t status;
   RsvgHandle *rsvg;
   GError *gerr = NULL;
@@ -973,7 +974,6 @@ Image::loadSVGFromBuffer(uint8_t *buf, unsigned len) {
 
   RsvgDimensionData *dims = new RsvgDimensionData();
   rsvg_handle_get_dimensions(rsvg, dims);
-  rsvg_handle_set_dpi(rsvg, 480);
 
   _surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, dims->width, dims->height);
 
