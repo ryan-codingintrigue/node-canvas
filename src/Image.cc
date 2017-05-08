@@ -973,6 +973,7 @@ Image::loadSVGFromBuffer(uint8_t *buf, unsigned len) {
 
   RsvgDimensionData *dims = new RsvgDimensionData();
   rsvg_handle_get_dimensions(rsvg, dims);
+  rsvg_handle_set_dpi(rsvg, 480);
 
   _surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, dims->width, dims->height);
 
